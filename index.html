@@ -15,6 +15,17 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="duotone" color-interpolation-filters="sRGB">
+    <feColorMatrix type="matrix" values="0.2126 0.7152 0.0722 0 0  0.2126 0.7152 0.0722 0 0  0.2126 0.7152 0.0722 0 0  0 0 0 1 0" />
+    <feComponentTransfer>
+      <feFuncR type="table" tableValues="0.0902 0.7255" />
+      <feFuncG type="table" tableValues="0.1373 0.4667" />
+      <feFuncB type="table" tableValues="0.2275 0.1725" />
+    </feComponentTransfer>
+  </filter>
+</svg>
+
 <header class="site-header" id="top">
   <div class="wrap header__inner">
     <a class="brand" href="#top">Akhila<span class="brand__dot">.</span>Banoth</a>
@@ -37,24 +48,25 @@
   <section class="hero" id="home">
     <div class="wrap hero__inner">
       <div class="hero__text">
-        <p class="eyebrow">Java Full Stack Developer · Team Lead</p>
-        <h1 class="hero__title">
+        <p class="eyebrow hero-in hero-in--1">Java Full Stack Developer · Team Lead</p>
+        <h1 class="hero__title hero-in hero-in--2">
           I turn <span class="hl">1,000&#8209;user</span> prototypes into
           <span class="hl">70,000+&#8209;user</span> platforms —
           <em>without the pager going off.</em>
         </h1>
-        <p class="hero__lede">
+        <p class="hero__lede hero-in hero-in--3">
           2+ years designing, building and running production systems on Java, Spring Boot, Angular,
           MySQL, Redis and AWS — from booking engines to fleet tracking to learning platforms.
         </p>
-        <div class="hero__actions">
+        <div class="hero__actions hero-in hero-in--4">
           <a class="btn btn--primary" href="#projects">See the work</a>
           <a class="btn btn--ghost" href="#contact">Get in touch</a>
         </div>
       </div>
 
-      <div class="hero__portrait">
-        <div class="portrait-frame">
+      <div class="hero__portrait hero-in hero-in--5">
+        <div class="portrait-ring" aria-hidden="true"></div>
+        <div class="portrait-frame duo">
           <img src="assets/img/hero.jpg" alt="Portrait of Akhila Banoth" width="720" height="720" />
         </div>
         <div class="portrait-badge">
@@ -86,10 +98,10 @@
 
     <div class="wrap">
       <ul class="stats">
-        <li class="stats__item"><span class="stats__num">50%</span><span class="stats__label">faster API response times</span></li>
-        <li class="stats__item"><span class="stats__num">60%</span><span class="stats__label">less database load via Redis</span></li>
-        <li class="stats__item"><span class="stats__num">50%</span><span class="stats__label">higher throughput from zone-based load balancing</span></li>
-        <li class="stats__item"><span class="stats__num">99.9%</span><span class="stats__label">application availability at scale</span></li>
+        <li class="stats__item"><span class="stats__num" data-count-to="50" data-suffix="%">0%</span><span class="stats__label">faster API response times</span></li>
+        <li class="stats__item"><span class="stats__num" data-count-to="60" data-suffix="%">0%</span><span class="stats__label">less database load via Redis</span></li>
+        <li class="stats__item"><span class="stats__num" data-count-to="50" data-suffix="%">0%</span><span class="stats__label">higher throughput from zone-based load balancing</span></li>
+        <li class="stats__item"><span class="stats__num" data-count-to="99.9" data-suffix="%">0%</span><span class="stats__label">application availability at scale</span></li>
       </ul>
     </div>
   </section>
@@ -97,7 +109,7 @@
   <!-- ABOUT -->
   <section class="about" id="about">
     <div class="wrap about__inner">
-      <div class="about__media">
+      <div class="about__media duo">
         <img src="assets/img/about.jpg" alt="Akhila Banoth standing in an office setting" width="720" height="900" />
       </div>
       <div class="about__content">
@@ -291,7 +303,7 @@
   <!-- CONTACT -->
   <section class="contact" id="contact">
     <div class="wrap contact__inner">
-      <div class="contact__media">
+      <div class="contact__media duo">
         <img src="assets/img/contact.jpg" alt="Akhila Banoth" width="720" height="1600" />
       </div>
       <div class="contact__content">
