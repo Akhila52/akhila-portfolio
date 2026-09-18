@@ -9,8 +9,10 @@ index.html
 assets/
   css/style.css
   js/main.js
-  img/hero.jpg        # profile photo (hero + circular avatar)
-  img/about.jpg        # about section photo
+  img/hero.jpg          # hero circular avatar
+  img/about.jpg         # about section photo
+  img/experience.jpg    # experience section photo
+  img/projects.jpg      # projects section accent photo
   img/contact.jpg       # contact section photo
   img/favicon.svg
 ```

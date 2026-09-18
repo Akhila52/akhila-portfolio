@@ -1,24 +1,24 @@
 /* ---------------------------------------------------------------
    Akhila Banoth — Portfolio
    Two-color system only: deep navy (ink, structure, dark surfaces)
-   + warm zari gold (the one accent — labels, numbers, hover states,
-   the photo duotone). Everything else is neutral off-white/gray.
+   + champagne gold (the one accent — labels, numbers, hover states).
+   Everything else is neutral ivory/gray.
 ---------------------------------------------------------------- */
 
 :root {
-  --bg: #f6f4ef;
+  --bg: #f8f6f2;
   --surface: #ffffff;
-  --surface-2: #eeeae0;
-  --navy: #17233a;
-  --navy-soft: #2a3752;
+  --surface-2: #efe9dd;
+  --navy: #1b2340;
+  --navy-soft: #313a5c;
   --ink: var(--navy);
-  --muted: #5c6675;
-  --gold: #b9772c;
-  --gold-strong: #9c611f;
-  --gold-soft: #e3b464;
-  --gold-ink: #2c1c05;
-  --line: #e2dccf;
-  --shadow: 0 24px 48px -28px rgba(23, 35, 58, 0.35);
+  --muted: #5e6479;
+  --gold: #ad8547;
+  --gold-strong: #8c6a34;
+  --gold-soft: #ddbd82;
+  --gold-ink: #2a1f0c;
+  --line: #e4ddcd;
+  --shadow: 0 24px 48px -28px rgba(27, 35, 64, 0.35);
   --radius-lg: 22px;
   --radius-md: 14px;
   --radius-sm: 8px;
@@ -29,36 +29,36 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #10151f;
-    --surface: #171f2c;
-    --surface-2: #1d2534;
-    --navy: #eef1f6;
-    --navy-soft: #c7cedb;
+    --bg: #10131d;
+    --surface: #171b29;
+    --surface-2: #1d2231;
+    --navy: #f2f0ea;
+    --navy-soft: #cac6d6;
     --ink: var(--navy);
-    --muted: #9aa5b3;
-    --gold: #e2a15a;
-    --gold-strong: #f0b878;
-    --gold-soft: #f0b878;
-    --gold-ink: #201404;
-    --line: #2a323f;
+    --muted: #a6abb9;
+    --gold: #d6b16e;
+    --gold-strong: #e8c88c;
+    --gold-soft: #e8c88c;
+    --gold-ink: #201703;
+    --line: #2a2f3f;
     --shadow: 0 24px 48px -20px rgba(0, 0, 0, 0.6);
     color-scheme: dark;
   }
 }
 
 :root[data-theme="dark"] {
-  --bg: #10151f;
-  --surface: #171f2c;
-  --surface-2: #1d2534;
-  --navy: #eef1f6;
-  --navy-soft: #c7cedb;
+  --bg: #10131d;
+  --surface: #171b29;
+  --surface-2: #1d2231;
+  --navy: #f2f0ea;
+  --navy-soft: #cac6d6;
   --ink: var(--navy);
-  --muted: #9aa5b3;
-  --gold: #e2a15a;
-  --gold-strong: #f0b878;
-  --gold-soft: #f0b878;
-  --gold-ink: #201404;
-  --line: #2a323f;
+  --muted: #a6abb9;
+  --gold: #d6b16e;
+  --gold-strong: #e8c88c;
+  --gold-soft: #e8c88c;
+  --gold-ink: #201703;
+  --line: #2a2f3f;
   --shadow: 0 24px 48px -20px rgba(0, 0, 0, 0.6);
   color-scheme: dark;
 }
@@ -116,18 +116,6 @@ h1, h2, h3 {
 em { font-style: italic; color: var(--gold-strong); }
 
 :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
-
-/* ---------------- Duotone photo treatment ----------------
-   Recolors every portrait into the navy/gold system so the
-   photos read as one branded, professional-toned identity. */
-
-.duo {
-  position: relative;
-  overflow: hidden;
-}
-.duo img {
-  filter: brightness(0.55) contrast(1.7) url(#duotone);
-}
 
 /* ---------------- Header ---------------- */
 
@@ -511,8 +499,8 @@ section { padding-block: 88px; }
   object-fit: cover;
   width: 100%;
   height: auto;
-  aspect-ratio: 4 / 5;
-  object-position: center 15%;
+  aspect-ratio: 3 / 4;
+  object-position: center 20%;
 }
 
 .about__content p { color: var(--muted); max-width: 62ch; }
@@ -553,6 +541,28 @@ section { padding-block: 88px; }
 .pills--tags li { background: transparent; border-color: var(--gold); color: var(--gold-strong); }
 
 /* ---------------- Experience ---------------- */
+
+.experience__inner {
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.experience__media {
+  position: sticky;
+  top: 100px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+.experience__media img {
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-position: center 20%;
+}
 
 .timeline { position: relative; }
 
@@ -625,6 +635,34 @@ section { padding-block: 88px; }
 .timeline__list li::marker { color: var(--gold); }
 
 /* ---------------- Projects ---------------- */
+
+.projects__intro {
+  display: grid;
+  grid-template-columns: 168px 1fr;
+  gap: 32px;
+  align-items: center;
+  margin-bottom: 44px;
+}
+
+.projects__media {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  transform: rotate(-2deg);
+  transition: transform 0.3s var(--ease);
+}
+.projects__media:hover { transform: rotate(0deg); }
+.projects__media img {
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-position: center 18%;
+}
+
+.projects__intro .section-title,
+.projects__intro .section-eyebrow { margin-bottom: 0; }
+.projects__intro .section-eyebrow { margin-bottom: 12px; }
 
 .project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
 
@@ -829,10 +867,13 @@ section { padding-block: 88px; }
   .hero__portrait { justify-self: start; margin-top: 12px; }
   .about__inner,
   .education__inner,
-  .contact__inner { grid-template-columns: 1fr; }
+  .contact__inner,
+  .experience__inner { grid-template-columns: 1fr; }
   .about__media { max-width: 320px; }
+  .experience__media { position: static; order: -1; max-width: 320px; margin-bottom: 32px; }
   .skill-groups { grid-template-columns: 1fr 1fr; }
   .project-grid { grid-template-columns: 1fr; }
+  .projects__intro { grid-template-columns: 96px 1fr; }
   .stats { grid-template-columns: 1fr 1fr; }
   .contact__media { max-width: 260px; }
 }
@@ -859,4 +900,6 @@ section { padding-block: 88px; }
   .skill-groups { grid-template-columns: 1fr; }
   .contact-list li { flex-direction: column; gap: 4px; }
   .contact-list__label { width: auto; }
+  .projects__intro { grid-template-columns: 1fr; }
+  .projects__media { max-width: 180px; transform: none; }
 }
