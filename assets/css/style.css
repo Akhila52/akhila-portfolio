@@ -410,6 +410,14 @@ em { font-style: italic; color: var(--gold-strong); }
 }
 .growth__endpoints span:last-child { color: var(--ink); font-weight: 600; }
 
+.growth__breakdown {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-align: right;
+  margin: 6px 0 0;
+}
+
 /* stats row */
 
 .stats {
