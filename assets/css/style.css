@@ -1,24 +1,28 @@
 /* ---------------------------------------------------------------
    Akhila Banoth — Portfolio
-   Two-color system only: deep navy (ink, structure, dark surfaces)
-   + champagne gold (the one accent — labels, numbers, hover states).
-   Everything else is neutral ivory/gray.
+   Two-color system only: deep bottle-green (ink, structure, dark
+   surfaces) + warm copper (the one accent — labels, numbers, hover
+   states). Everything else is neutral ivory/gray. Variable names
+   (--navy/--gold) are kept from the previous palette for structure;
+   only the hues changed.
 ---------------------------------------------------------------- */
 
 :root {
-  --bg: #f8f6f2;
+  --bg: #f7f5ee;
   --surface: #ffffff;
-  --surface-2: #efe9dd;
-  --navy: #1b2340;
-  --navy-soft: #313a5c;
+  --surface-2: #ece6d6;
+  --navy: #1a332c;
+  --navy-soft: #2f4a41;
   --ink: var(--navy);
-  --muted: #5e6479;
-  --gold: #ad8547;
-  --gold-strong: #8c6a34;
-  --gold-soft: #ddbd82;
-  --gold-ink: #2a1f0c;
-  --line: #e4ddcd;
-  --shadow: 0 24px 48px -28px rgba(27, 35, 64, 0.35);
+  --muted: #5b6b63;
+  --gold: #bb6b3c;
+  --gold-strong: #984f26;
+  --gold-soft: #e2a273;
+  --gold-ink: #2a1408;
+  --line: #ddd6c2;
+  --shadow: 0 24px 48px -28px rgba(26, 51, 44, 0.35);
+  --contact-bg: #14251f;
+  --contact-text: #f7f5ee;
   --radius-lg: 22px;
   --radius-md: 14px;
   --radius-sm: 8px;
@@ -29,36 +33,36 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #10131d;
-    --surface: #171b29;
-    --surface-2: #1d2231;
-    --navy: #f2f0ea;
-    --navy-soft: #cac6d6;
+    --bg: #0f1613;
+    --surface: #161f1a;
+    --surface-2: #1c2621;
+    --navy: #eef3ee;
+    --navy-soft: #c7d6cd;
     --ink: var(--navy);
-    --muted: #a6abb9;
-    --gold: #d6b16e;
-    --gold-strong: #e8c88c;
-    --gold-soft: #e8c88c;
-    --gold-ink: #201703;
-    --line: #2a2f3f;
+    --muted: #9fb0a7;
+    --gold: #e2925a;
+    --gold-strong: #f0ab7c;
+    --gold-soft: #f0ab7c;
+    --gold-ink: #241203;
+    --line: #29332d;
     --shadow: 0 24px 48px -20px rgba(0, 0, 0, 0.6);
     color-scheme: dark;
   }
 }
 
 :root[data-theme="dark"] {
-  --bg: #10131d;
-  --surface: #171b29;
-  --surface-2: #1d2231;
-  --navy: #f2f0ea;
-  --navy-soft: #cac6d6;
+  --bg: #0f1613;
+  --surface: #161f1a;
+  --surface-2: #1c2621;
+  --navy: #eef3ee;
+  --navy-soft: #c7d6cd;
   --ink: var(--navy);
-  --muted: #a6abb9;
-  --gold: #d6b16e;
-  --gold-strong: #e8c88c;
-  --gold-soft: #e8c88c;
-  --gold-ink: #201703;
-  --line: #2a2f3f;
+  --muted: #9fb0a7;
+  --gold: #e2925a;
+  --gold-strong: #f0ab7c;
+  --gold-soft: #f0ab7c;
+  --gold-ink: #241203;
+  --line: #29332d;
   --shadow: 0 24px 48px -20px rgba(0, 0, 0, 0.6);
   color-scheme: dark;
 }
@@ -211,9 +215,23 @@ em { font-style: italic; color: var(--gold-strong); }
 
 /* ---------------- Hero ---------------- */
 
-.hero { padding-top: 56px; overflow: hidden; }
+.hero { padding-top: 56px; overflow: hidden; position: relative; }
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(var(--gold) 1.4px, transparent 1.4px);
+  background-size: 26px 26px;
+  background-position: -6px -6px;
+  -webkit-mask-image: linear-gradient(180deg, black, transparent 78%);
+  mask-image: linear-gradient(180deg, black, transparent 78%);
+  opacity: 0.09;
+  pointer-events: none;
+}
 
 .hero__inner {
+  position: relative;
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
   gap: 48px;
@@ -234,10 +252,12 @@ em { font-style: italic; color: var(--gold-strong); }
 }
 .eyebrow::before {
   content: "";
-  width: 22px;
-  height: 1px;
-  background: var(--gold);
+  width: 8px;
+  height: 8px;
+  border: 1.5px solid var(--gold);
+  transform: rotate(45deg);
   display: inline-block;
+  flex: none;
 }
 
 .hero__title {
@@ -473,11 +493,41 @@ section { padding-block: 88px; }
   text-transform: uppercase;
   color: var(--gold-strong);
   margin: 0 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-eyebrow::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  display: inline-block;
+  flex: none;
 }
 
 .section-eyebrow--onaccent { color: var(--gold); opacity: 0.9; }
 
 .section-title { font-size: clamp(1.7rem, 3vw, 2.3rem); margin-bottom: 36px; }
+
+/* ---------------- Decorative frame corners ----------------
+   A repeated viewfinder-corner motif on every portrait, tying
+   the photos together as one visual pattern across sections. */
+
+.framed { position: relative; }
+.framed::before,
+.framed::after {
+  content: "";
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border: 2px solid var(--gold);
+  pointer-events: none;
+  z-index: 2;
+}
+.framed::before { top: -9px; left: -9px; border-right: none; border-bottom: none; }
+.framed::after { bottom: -9px; right: -9px; border-left: none; border-top: none; }
 
 /* ---------------- About ---------------- */
 
@@ -748,7 +798,7 @@ section { padding-block: 88px; }
 
 /* ---------------- Contact ---------------- */
 
-.contact { background: var(--ink); color: var(--bg); position: relative; overflow: hidden; }
+.contact { background: var(--contact-bg); color: var(--contact-text); position: relative; overflow: hidden; }
 
 .contact::before {
   content: "";
@@ -758,6 +808,16 @@ section { padding-block: 88px; }
   width: 60%;
   aspect-ratio: 1;
   background: radial-gradient(circle, color-mix(in srgb, var(--gold) 22%, transparent) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.contact::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(var(--contact-text) 1.4px, transparent 1.4px);
+  background-size: 26px 26px;
+  opacity: 0.05;
   pointer-events: none;
 }
 
@@ -778,9 +838,9 @@ section { padding-block: 88px; }
   object-position: top center;
 }
 
-.contact__title { font-size: clamp(1.9rem, 3.6vw, 2.6rem); color: var(--bg); }
+.contact__title { font-size: clamp(1.9rem, 3.6vw, 2.6rem); color: var(--contact-text); }
 
-.contact__lede { color: color-mix(in srgb, var(--bg) 70%, transparent); max-width: 46ch; margin-top: 16px; }
+.contact__lede { color: color-mix(in srgb, var(--contact-text) 70%, transparent); max-width: 46ch; margin-top: 16px; }
 
 .contact-list { list-style: none; margin: 32px 0 0; padding: 0; display: flex; flex-direction: column; gap: 16px; }
 
@@ -789,7 +849,7 @@ section { padding-block: 88px; }
   align-items: baseline;
   gap: 16px;
   padding-bottom: 16px;
-  border-bottom: 1px solid color-mix(in srgb, var(--bg) 18%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--contact-text) 18%, transparent);
 }
 
 .contact-list__label {
@@ -797,13 +857,13 @@ section { padding-block: 88px; }
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: color-mix(in srgb, var(--bg) 55%, transparent);
+  color: color-mix(in srgb, var(--contact-text) 55%, transparent);
   width: 90px;
   flex: none;
 }
 
 .contact-list a {
-  color: var(--bg);
+  color: var(--contact-text);
   text-decoration: none;
   font-size: 1.05rem;
   font-weight: 600;
