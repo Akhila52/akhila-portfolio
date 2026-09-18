@@ -1,56 +1,12 @@
 /* ---------------------------------------------------------------
    Akhila Banoth — Portfolio
-   Two-color system only: deep bottle-green (ink, structure, dark
-   surfaces) + warm copper (the one accent — labels, numbers, hover
-   states). Everything else is neutral ivory/gray. Variable names
-   (--navy/--gold) are kept from the previous palette for structure;
-   only the hues changed.
+   Committed dark theme (no light variant) — deep bottle-green
+   surfaces + warm copper as the one accent (labels, numbers, hover
+   states). Variable names (--navy/--gold) are kept from the earlier
+   light-first palette for structure; only the hues changed.
 ---------------------------------------------------------------- */
 
 :root {
-  --bg: #f7f5ee;
-  --surface: #ffffff;
-  --surface-2: #ece6d6;
-  --navy: #1a332c;
-  --navy-soft: #2f4a41;
-  --ink: var(--navy);
-  --muted: #5b6b63;
-  --gold: #bb6b3c;
-  --gold-strong: #984f26;
-  --gold-soft: #e2a273;
-  --gold-ink: #2a1408;
-  --line: #ddd6c2;
-  --shadow: 0 24px 48px -28px rgba(26, 51, 44, 0.35);
-  --contact-bg: #14251f;
-  --contact-text: #f7f5ee;
-  --radius-lg: 22px;
-  --radius-md: 14px;
-  --radius-sm: 8px;
-  --ease: cubic-bezier(0.16, 1, 0.3, 1);
-
-  color-scheme: light;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0f1613;
-    --surface: #161f1a;
-    --surface-2: #1c2621;
-    --navy: #eef3ee;
-    --navy-soft: #c7d6cd;
-    --ink: var(--navy);
-    --muted: #9fb0a7;
-    --gold: #e2925a;
-    --gold-strong: #f0ab7c;
-    --gold-soft: #f0ab7c;
-    --gold-ink: #241203;
-    --line: #29332d;
-    --shadow: 0 24px 48px -20px rgba(0, 0, 0, 0.6);
-    color-scheme: dark;
-  }
-}
-
-:root[data-theme="dark"] {
   --bg: #0f1613;
   --surface: #161f1a;
   --surface-2: #1c2621;
@@ -64,6 +20,13 @@
   --gold-ink: #241203;
   --line: #29332d;
   --shadow: 0 24px 48px -20px rgba(0, 0, 0, 0.6);
+  --contact-bg: #0a100d;
+  --contact-text: #f7f5ee;
+  --radius-lg: 22px;
+  --radius-md: 14px;
+  --radius-sm: 8px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+
   color-scheme: dark;
 }
 
@@ -583,7 +546,7 @@ section { padding-block: 88px; }
   padding: 6px 12px;
   border-radius: 999px;
   border: 1px solid var(--line);
-  transition: border-color 0.15s ease, transform 0.15s ease;
+  transition: border-color 0.15s ease, transform 0.15s ease, background 0.15s ease;
 }
 .pills li:hover { border-color: var(--gold); transform: translateY(-1px); }
 
@@ -913,11 +876,51 @@ section { padding-block: 88px; }
   @keyframes hero-in {
     to { opacity: 1; transform: none; }
   }
+
+  /* skill pills pop in one after another once their section is visible */
+  .about__content .pills li {
+    opacity: 0;
+    transform: translateY(8px) scale(0.94);
+  }
+  .about__content.is-visible .pills li {
+    animation: pop-in 0.45s var(--ease) forwards;
+  }
+  .about__content.is-visible .pills li:nth-child(1) { animation-delay: 0.05s; }
+  .about__content.is-visible .pills li:nth-child(2) { animation-delay: 0.1s; }
+  .about__content.is-visible .pills li:nth-child(3) { animation-delay: 0.15s; }
+  .about__content.is-visible .pills li:nth-child(4) { animation-delay: 0.2s; }
+  .about__content.is-visible .pills li:nth-child(5) { animation-delay: 0.25s; }
+  .about__content.is-visible .pills li:nth-child(6) { animation-delay: 0.3s; }
+  .about__content.is-visible .pills li:nth-child(7) { animation-delay: 0.35s; }
+  .about__content.is-visible .pills li:nth-child(8) { animation-delay: 0.4s; }
+  .about__content.is-visible .pills li:nth-child(9) { animation-delay: 0.45s; }
+
+  @keyframes pop-in {
+    to { opacity: 1; transform: none; }
+  }
+
+  /* ambient breathing glow behind the contact photo */
+  .contact::before { animation: breathe 7s ease-in-out infinite; }
+  @keyframes breathe {
+    0%, 100% { opacity: 0.85; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.08); }
+  }
+
+  /* a slow heartbeat on the single timeline milestone */
+  .timeline__marker { animation: marker-pulse 2.6s ease-in-out infinite; }
+  @keyframes marker-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--gold) 45%, transparent); }
+    50% { box-shadow: 0 0 0 6px color-mix(in srgb, var(--gold) 0%, transparent); }
+  }
+
+  .site-footer__inner a { transition: color 0.15s ease, transform 0.15s ease; display: inline-block; }
+  .site-footer__inner a:hover { transform: translateY(-2px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .portrait-frame, .portrait-ring, .portrait-badge { animation: none; }
+  .portrait-frame, .portrait-ring, .portrait-badge, .contact::before, .timeline__marker { animation: none; }
   .growth__line, .growth__area, .growth__dot--end { transition: none; stroke-dashoffset: 0; opacity: 1; transform: none; }
+  .pills li { opacity: 1; transform: none; }
 }
 
 /* ---------------- Responsive ---------------- */

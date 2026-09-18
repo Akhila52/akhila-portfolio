@@ -46,4 +46,4 @@ To use a custom domain, add a `CNAME` file with your domain name at the project 
 
 ## Editing content
 
-All text lives directly in `index.html` (no CMS/data file) — update the relevant section by hand. Colors, type and spacing are defined as CSS custom properties at the top of `assets/css/style.css`, including a dark-mode palette.
+All text lives directly in `index.html` (no CMS/data file) — update the relevant section by hand. Colors, type and spacing are defined as CSS custom properties at the top of `assets/css/style.css`. The site is a committed dark theme (no light variant) — it renders the same regardless of the visitor's system preference.

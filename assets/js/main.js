@@ -20,7 +20,7 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
 
 // Reveal-on-scroll for section headers, cards and the growth chart
 const revealTargets = document.querySelectorAll(
-  ".about__content, .about__media, .timeline__card, .experience__media, .projects__media, .project-card, .edu-item, .achievement-item, .contact__content, .contact__media, .growth, .stats"
+  ".about__content, .about__media, .section-head, .timeline__card, .experience__media, .projects__media, .project-card, .edu-item, .achievement-item, .contact__content, .contact__media, .growth, .stats"
 );
 
 revealTargets.forEach((el) => el.classList.add("reveal"));
