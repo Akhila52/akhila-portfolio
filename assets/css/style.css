@@ -111,7 +111,6 @@ em { font-style: italic; color: var(--gold-strong); }
   color: var(--ink);
   white-space: nowrap;
 }
-.brand__dot { color: var(--gold); }
 
 .site-nav {
   display: flex;
