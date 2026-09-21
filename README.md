@@ -9,11 +9,7 @@ index.html
 assets/
   css/style.css
   js/main.js
-  img/hero.jpg          # hero circular avatar
-  img/about.jpg         # about section photo
-  img/experience.jpg    # experience section photo
-  img/projects.jpg      # projects section accent photo
-  img/contact.jpg       # contact section photo
+  img/hero.jpg          # the only photo on the site — hero circular avatar
   img/favicon.svg
 ```
 
